@@ -1,0 +1,73 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "package_manager"
+dynamic = ["version"]
+description = "A Python3 package version manager that allows managing multiple versions of the same package simultaneously"
+readme = "README.md"
+authors = [
+    {name = "vistart", email = "i@vistart.me"}
+]
+license = {text = "Apache-2.0"}
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+keywords = ["package", "version", "management", "import"]
+requires-python = ">=3.8"
+dependencies = []
+
+[project.urls]
+"Homepage" = "https://github.com/vistart/python-package-manager"
+"Bug Tracker" = "https://github.com/vistart/python-package-manager/issues"
+"Documentation" = "https://github.com/vistart/python-package-manager#readme"
+"Source Code" = "https://github.com/vistart/python-package-manager"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.hatch.version]
+path = "src/package_manager/__init__.py"
+pattern = '^__version__\s*=\s*"(?P<version>(?:[1-9]\d*!)?\d+(?:\.\d+)*(?:[-._]?(?:a|alpha|b|beta|rc|pre|preview)(?:[-._]?\d+)?)?(?:\.post(?:0|[1-9]\d*))?(?:\.dev(?:0|[1-9]\d*))?(?:\+[a-z0-9]+(?:[._-][a-z0-9]+)*)?)"$'
+
+[tool.hatch.build]
+include = [
+  "src/**/*.py",
+  "src/**/*.pyi",
+  "LICENSE",
+  "README.md",
+]
+exclude = [
+  "tests/**",
+  "docs/**",
+  "examples/**",
+  "*.pyc",
+  "**/__pycache__",
+  "**/*.py[cod]",
+  "**/*.so",
+  "**/.DS_Store",
+  "**/.*.swp",
+  ".git*",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"

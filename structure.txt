@@ -1,0 +1,25 @@
+python-package-manager/
+│
+├── src/
+│   └── package_manager/
+│       ├── __init__.py           # 主导出文件，包含版本号
+│       ├── version.py            # 版本定义类
+│       ├── manager.py            # 包管理器核心类
+│       ├── registry.py           # 全局注册表
+│       ├── exceptions.py         # 异常类定义
+│       └── utils.py              # 工具函数
+│
+├── tests/
+│   ├── __init__.py
+│   ├── test_manager.py          # 测试包管理器核心功能
+│   ├── test_version.py          # 测试版本类功能
+│   └── test_utils.py            # 测试工具函数
+│
+├── examples/
+│   ├── basic_usage.py           # 基本使用示例
+│   └── advanced_usage.py        # 高级使用示例
+│
+├── setup.py                     # 安装脚本
+├── pyproject.toml               # 现代Python项目配置
+├── LICENSE                      # Apache 2.0 许可证
+└── README.md                    # 项目说明文件
